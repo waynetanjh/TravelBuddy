@@ -1,0 +1,43 @@
+<!-- landing/templates/landing/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to TravelBuddy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">🌍 TravelBuddy</a>
+            <div class="ms-auto">
+                <a href="/login/" class="btn btn-outline-primary me-2">Login</a>
+                <a href="/signup/" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="vh-100 d-flex align-items-center text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Plan smarter. Explore better.</h1>
+            <p class="lead mt-3">Your personalized trip planner for efficient and unforgettable journeys.</p>
+            <div class="mt-4">
+                <a href="/signup/" class="btn btn-lg btn-primary me-2">Get Started</a>
+                <a href="#about" class="btn btn-lg btn-outline-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="bg-white py-5 border-top">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-3">About Us</h2>
+            <p class="text-muted mx-auto" style="max-width: 600px;">
+                TravelBuddy is your smart route optimization companion. Whether you're planning a day trip or a multi-day adventure, we help you map out the best order to visit places, grouped by proximity and optimized for time.
+            </p>
+        </div>
+    </section>
+
+</body>
+</html>
