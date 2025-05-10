@@ -1,43 +1,131 @@
-<!-- landing/templates/landing/home.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to TravelBuddy</title>
+    <title>TravelBuddy | Smarter Trip Planning</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'landing/styles.css' %}">
+    <style>
+        .hero {
+            background: url('https://source.unsplash.com/1600x900/?travel,nature,landscape') center/cover no-repeat;
+            color: white;
+            position: relative;
+            height: 90vh;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        .hero-content {
+            z-index: 2;
+        }
+        .feature-icon {
+            font-size: 2rem;
+            color: #0d6efd;
+        }
+        footer {
+            background-color: #f8f9fa;
+        }
+    </style>
 </head>
-<body class="bg-light">
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <!-- Navbar (clean + sticky without blur) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">🌍 TravelBuddy</a>
-            <div class="ms-auto">
-                <a href="{% url 'login' %}" class="btn btn-outline-primary me-2">Login</a>
-                <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
+            <a class="navbar-brand fw-bold text-primary fs-4" href="#">🌍 TravelBuddy</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item me-3">
+                        <a class="nav-link text-dark fw-medium" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link text-dark fw-medium" href="#about">About</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
+                    </li>
+                </ul>
+
             </div>
         </div>
     </nav>
 
-    <section class="vh-100 d-flex align-items-center text-center">
-        <div class="container">
-            <h1 class="display-4 fw-bold">Plan smarter. Explore better.</h1>
-            <p class="lead mt-3">Your personalized trip planner for efficient and unforgettable journeys.</p>
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center justify-content-center text-center">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content position-relative">
+            <h1 class="display-4 fw-bold">Plan Smarter. Explore Better.</h1>
+            <p class="lead mt-3">Your AI-powered travel planner for efficient and unforgettable journeys.</p>
             <div class="mt-4">
                 <a href="{% url 'signup' %}" class="btn btn-lg btn-primary me-2">Get Started</a>
-                <a href="#about" class="btn btn-lg btn-outline-secondary">Learn More</a>
+                <a href="#features" class="btn btn-lg btn-outline-light">Learn More</a>
             </div>
         </div>
     </section>
 
-    <section id="about" class="bg-white py-5 border-top">
+    <!-- Features Section -->
+    <section id="features" class="py-5 bg-light">
         <div class="container text-center">
-            <h2 class="fw-bold mb-3">About Us</h2>
-            <p class="text-muted mx-auto" style="max-width: 600px;">
-                TravelBuddy is your smart route optimization companion. Whether you're planning a day trip or a multi-day adventure, we help you map out the best order to visit places, grouped by proximity and optimized for time.
-            </p>
+            <h2 class="fw-bold mb-5">Why Choose TravelBuddy?</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-4 bg-white shadow-sm rounded h-100">
+                        <div class="feature-icon mb-3">🧠</div>
+                        <h5 class="fw-bold">Smart Route Optimization</h5>
+                        <p class="text-muted">Automatically find the best path to cover all your destinations with minimal travel time.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 bg-white shadow-sm rounded h-100">
+                        <div class="feature-icon mb-3">📍</div>
+                        <h5 class="fw-bold">Nearby Suggestions</h5>
+                        <p class="text-muted">Discover points of interest, restaurants, and hidden gems near your route.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4 bg-white shadow-sm rounded h-100">
+                        <div class="feature-icon mb-3">📊</div>
+                        <h5 class="fw-bold">Visual Dashboard</h5>
+                        <p class="text-muted">Manage your trips, itineraries, and analytics in one place using our intuitive dashboard.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">How It Works</h2>
+            <p class="text-muted mb-5 mx-auto" style="max-width: 700px;">
+                TravelBuddy simplifies trip planning by calculating the optimal route through selected destinations.
+                You can adjust time, preferences, and group travel constraints — our algorithm does the rest.
+            </p>
+            <a href="{% url 'signup' %}" class="btn btn-outline-primary btn-lg">Try It Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center">
+        <div class="container">
+            <p class="mb-0 text-muted">© 2025 TravelBuddy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS for navbar toggle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
