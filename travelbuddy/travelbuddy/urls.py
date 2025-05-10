@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('landing.urls')), # 👈 Add this line
     path('accounts', include('accounts.urls')),
+    path('dashboard/', include('dashboard.urls')),
+    path('route/', include('planner.urls')),
 ]
 
