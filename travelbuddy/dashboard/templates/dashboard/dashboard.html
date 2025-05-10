@@ -1,68 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Dashboard - TravelBuddy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Dashboard - TravelBuddy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .card:hover {
+      transform: translateY(-3px);
+      transition: 0.3s ease;
+    }
+  </style>
 </head>
 <body class="bg-light">
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">TravelBuddy</a>
-        <div class="ms-auto">
-            <span class="navbar-text text-white me-3">Hello, {{ request.user.username }}!</span>
-            <a href="{% url 'logout' %}" class="btn btn-outline-light">Logout</a>
+{% include 'dashboard/navbar.html' %}
+
+<div class="container pt-3 pb-5">
+  <div class="text-center mb-5">
+    <h1 class="fw-bold display-5">Welcome Back, {{ request.user.first_name|default:request.user.username }}!</h1>
+    <p class="lead text-muted">Plan your journeys and manage your travel with ease.</p>
+  </div>
+
+  <div class="row g-4 justify-content-center">
+    <!-- Profile -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card shadow-sm rounded-4 text-center h-100 border-0">
+        <div class="card-body">
+          <i class="bi bi-person-circle display-4 text-secondary mb-3"></i>
+          <h5 class="card-title">My Profile</h5>
+          <p class="card-text">Update your information and view account details.</p>
+          <a href="{% url 'profile' %}" class="btn btn-outline-secondary">View Profile</a>
         </div>
+      </div>
     </div>
-</nav>
 
-<!-- Dashboard Content -->
-<div class="container py-5">
-    <div class="text-center mb-4">
-        <h1 class="fw-bold">Dashboard</h1>
-        <p class="text-muted">Welcome to your travel planner hub.</p>
+    <!-- Create Route -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card shadow-sm rounded-4 text-center h-100 border-0">
+        <div class="card-body">
+          <i class="bi bi-map display-4 text-primary mb-3"></i>
+          <h5 class="card-title">Create Route</h5>
+          <p class="card-text">Start building an optimized travel route quickly.</p>
+          <a href="/route/create/" class="btn btn-primary">Start Planning</a>
+        </div>
+      </div>
     </div>
 
-    <div class="row justify-content-center">
-        <!-- Create Route -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm text-center">
-                <div class="card-body">
-                    <h5 class="card-title">Create Route</h5>
-                    <p class="card-text">Start planning a new optimized travel route.</p>
-                    <a href="/route/create/" class="btn btn-primary">Start Planning</a>
-                </div>
-            </div>
+    <!-- Logout -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card shadow-sm rounded-4 text-center h-100 border-0">
+        <div class="card-body">
+          <i class="bi bi-box-arrow-right display-4 text-danger mb-3"></i>
+          <h5 class="card-title">Logout</h5>
+          <p class="card-text">Log out and return to the homepage safely.</p>
+          <a href="{% url 'logout' %}" class="btn btn-outline-danger">Log Out</a>
         </div>
-
-        <!-- My Profile -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm text-center">
-                <div class="card-body">
-                    <h5 class="card-title">My Profile</h5>
-                    <p class="card-text">View and edit your user profile information.</p>
-                    <a href="{% url 'profile' %}" class="btn btn-secondary">Go to Profile</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Logout -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm text-center">
-                <div class="card-body">
-                    <h5 class="card-title">Logout</h5>
-                    <p class="card-text">End your session and return to the landing page.</p>
-                    <a href="{% url 'logout' %}" class="btn btn-danger">Log Out</a>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
